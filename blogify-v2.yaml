@@ -1,0 +1,56 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Blogify-v2
+meta:
+  id: wrk_0711182122af4c22ad5e9b5ccf845610
+  created: 1776888327642
+  modified: 1776888453591
+  description: ""
+collection:
+  - url: http://localhost:8787/api/v1/signup
+    name: signup1
+    meta:
+      id: req_3ad6e9da4e434dceb257918ab82a4f70
+      created: 1776888327659
+      modified: 1776888385810
+      isPrivate: false
+      description: ""
+      sortKey: -1776888327659
+    method: GET
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"username": "amandeep1",
+        	"password": "1234",
+        	"email": "a1@gmail.com",
+        	"name": "aman1"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.5.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_f1cf2b4e56557cd270ef3b2a24c70d3bc0a70cc1
+    created: 1776888327653
+    modified: 1776888327653
+environments:
+  name: Base Environment
+  meta:
+    id: env_f1cf2b4e56557cd270ef3b2a24c70d3bc0a70cc1
+    created: 1776888327650
+    modified: 1776888327650
+    isPrivate: false
