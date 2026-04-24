@@ -23,7 +23,6 @@ router.use("/*", async (c, next) => {
       );
     }
 
-    console.log(jwtContent.userId);
     c.set("jwtPayload", jwtContent.userId);
     await next();
   } catch (e) {
@@ -38,7 +37,6 @@ router.use("/*", async (c, next) => {
 
 //create blog
 router.post("/", async (c) => {
-  console.log("called");
   const prisma = new PrismaClient({
     accelerateUrl: c.env.DATABASE_URL,
   }).$extends(withAccelerate());
