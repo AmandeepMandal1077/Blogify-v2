@@ -3,12 +3,11 @@
   "name": "blogify-v2",
   "main": "src/index.ts",
   "compatibility_date": "2026-04-22",
-  // "compatibility_flags": [
-  //   "nodejs_compat"
-  // ],
-  "vars": {
-    "DATABASE_URL": "DATABASE_POOLING_URL",
-  },
+  // "compatibility_flags": ["nodejs_compat"],
+  // "vars": {
+  //   "DATABASE_URL": "DATABASE_POOLING_URL",
+  //   "JWT_SECRET": "JWT_SECRET",
+  // },
   // "kv_namespaces": [
   //   {
   //     "binding": "MY_KV_NAMESPACE",
