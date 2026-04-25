@@ -1,0 +1,237 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Blogify-v2
+meta:
+  id: wrk_0711182122af4c22ad5e9b5ccf845610
+  created: 1776888327642
+  modified: 1777051160766
+  description: ""
+collection:
+  - name: User
+    meta:
+      id: fld_c12b1f60b4344d63a4e70f6339d7b7d7
+      created: 1777049474072
+      modified: 1777049474072
+      sortKey: -1777049474072
+      description: ""
+    children:
+      - url: "{{baseurl}}/api/v1/user/signup"
+        name: signup
+        meta:
+          id: req_3ad6e9da4e434dceb257918ab82a4f70
+          created: 1776888327659
+          modified: 1777051088383
+          isPrivate: false
+          description: ""
+          sortKey: -1777049479557
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"username": "aman",
+            	"password": "1234",
+            	"email": "aman@gmail.com",
+            	"name": "aman"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{baseurl}}/api/v1/user/signin"
+        name: signin
+        meta:
+          id: req_3bcd96001e8d4be79753b2fee1e92dc6
+          created: 1777038331296
+          modified: 1777051082217
+          isPrivate: false
+          description: ""
+          sortKey: -1777049479657
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"username": "aman",
+            	"password": "1234"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+  - name: Blog
+    meta:
+      id: fld_b0746fb7ba97486bb70e55fb438b68b4
+      created: 1777049491247
+      modified: 1777049491247
+      sortKey: -1777049491247
+      description: ""
+    children:
+      - url: "{{baseurl}}/api/v1/blog/bulk"
+        name: getAllBlog
+        meta:
+          id: req_205a6ea8fadb4e2886d93b7c20490bc6
+          created: 1777049496514
+          modified: 1777051046371
+          isPrivate: false
+          description: ""
+          sortKey: -1777049498806
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+          - name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlZjU4MzFlYy0xZTk5LTRjY2UtODdkMS1mMDg4Njg2NDc5YTIifQ.gUgLIqdavTIsoECOBHN7bi5wO0BUGPEcm4ZYe9eBVzw
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{baseurl}}/api/v1/blog/a107da5c-dfe2-48d9-8324-311e6511c58f"
+        name: getBlogById
+        meta:
+          id: req_341726113b8c4985b51d6a8e38d84bd0
+          created: 1777049549505
+          modified: 1777051060063
+          isPrivate: false
+          description: ""
+          sortKey: -1777049489231.5
+        method: GET
+        headers:
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+          - name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlZjU4MzFlYy0xZTk5LTRjY2UtODdkMS1mMDg4Njg2NDc5YTIifQ.gUgLIqdavTIsoECOBHN7bi5wO0BUGPEcm4ZYe9eBVzw
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{baseurl}}/api/v1/blog"
+        name: createBlog
+        meta:
+          id: req_db5c4389039a49888991c809d377dc7c
+          created: 1777049653912
+          modified: 1777051066870
+          isPrivate: false
+          description: ""
+          sortKey: -1777049484444.25
+        method: POST
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"title": "first blog",
+            	"content": "first content"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+          - name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlZjU4MzFlYy0xZTk5LTRjY2UtODdkMS1mMDg4Njg2NDc5YTIifQ.gUgLIqdavTIsoECOBHN7bi5wO0BUGPEcm4ZYe9eBVzw
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+      - url: "{{baseurl}}/api/v1/blog"
+        name: updateBlog
+        meta:
+          id: req_268e7243695648119d602ce6f65c93bc
+          created: 1777049697424
+          modified: 1777051075656
+          isPrivate: false
+          description: ""
+          sortKey: -1777049482050.625
+        method: PUT
+        body:
+          mimeType: application/json
+          text: |-
+            {
+            	"blogId": "a107da5c-dfe2-48d9-8324-311e6511c58f",
+            	"title": "first blog new",
+            	"content": "first content"
+            }
+        headers:
+          - name: Content-Type
+            value: application/json
+          - name: User-Agent
+            value: insomnia/12.5.0
+            description: ""
+            disabled: false
+          - name: Authorization
+            value: Bearer
+              eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJlZjU4MzFlYy0xZTk5LTRjY2UtODdkMS1mMDg4Njg2NDc5YTIifQ.gUgLIqdavTIsoECOBHN7bi5wO0BUGPEcm4ZYe9eBVzw
+            description: ""
+            disabled: false
+        settings:
+          renderRequestBody: true
+          encodeUrl: true
+          followRedirects: global
+          cookies:
+            send: true
+            store: true
+          rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_f1cf2b4e56557cd270ef3b2a24c70d3bc0a70cc1
+    created: 1776888327653
+    modified: 1776888327653
+environments:
+  name: Base Environment
+  meta:
+    id: env_f1cf2b4e56557cd270ef3b2a24c70d3bc0a70cc1
+    created: 1776888327650
+    modified: 1777051027526
+    isPrivate: false
+  data:
+    baseurl: https://blogify-v2.2023kucp1077.workers.dev/
