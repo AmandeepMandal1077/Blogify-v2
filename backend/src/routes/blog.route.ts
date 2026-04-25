@@ -2,11 +2,18 @@ import { Hono } from "hono";
 import { verify } from "hono/jwt";
 import { PrismaClient } from "../generated/prisma/client";
 import { withAccelerate } from "@prisma/extension-accelerate";
+import {
+  createBlogBodySchema,
+  updateBlogBodySchema,
+} from "@amandeepmandal/common";
 
 const router = new Hono<{
   Bindings: {
     DATABASE_URL: string;
     JWT_SECRET: string;
+  };
+  Variables: {
+    jwtPayload: string;
   };
 }>();
 
@@ -42,8 +49,13 @@ router.post("/", async (c) => {
   }).$extends(withAccelerate());
 
   const body = await c.req.json();
+  const { success } = createBlogBodySchema.safeParse(body);
+  if (!success) {
+    c.status(411);
+    return c.text("Invalid");
+  }
   try {
-    const userId = String(c.get("jwtPayload"));
+    const userId = c.get("jwtPayload");
     if (!userId) {
       return c.json(
         {
@@ -84,8 +96,13 @@ router.put("/", async (c) => {
   }).$extends(withAccelerate());
 
   const body = await c.req.json();
+  const { success } = updateBlogBodySchema.safeParse(body);
+  if (!success || !body.blogId) {
+    c.status(411);
+    return c.text("Invalid");
+  }
   try {
-    const userId = String(c.get("jwtPayload"));
+    const userId = c.get("jwtPayload");
     if (!userId) {
       return c.json(
         {
@@ -94,14 +111,16 @@ router.put("/", async (c) => {
         403,
       );
     }
+
+    const data: { title?: string; content?: string } = {};
+    if (body.title) data.title = body.title;
+    if (body.content) data.content = body.content;
+
     const updatedBlog = await prisma.blog.update({
       where: {
         id: body.blogId,
       },
-      data: {
-        title: body.title,
-        content: body.content,
-      },
+      data,
     });
 
     return c.json(
@@ -155,7 +174,7 @@ router.get("/:id", async (c) => {
 
   const blogId = c.req.param("id");
   try {
-    const userId = String(c.get("jwtPayload"));
+    const userId = c.get("jwtPayload");
     if (!userId) {
       return c.json(
         {

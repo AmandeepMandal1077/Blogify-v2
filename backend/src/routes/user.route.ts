@@ -2,6 +2,7 @@ import { Hono } from "hono";
 import { PrismaClient } from "../generated/prisma/client";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { sign } from "hono/jwt";
+import { SigninBodySchema, SignupBodySchema } from "@amandeepmandal/common";
 
 const router = new Hono<{
   Bindings: {
@@ -16,6 +17,11 @@ router.post("/signup", async (c) => {
   }).$extends(withAccelerate());
 
   const body = await c.req.json();
+  const { success } = SignupBodySchema.safeParse(body);
+  if (!success) {
+    c.status(411);
+    return c.text("Invalid");
+  }
   try {
     const user = await prisma.user.create({
       data: {
@@ -50,6 +56,11 @@ router.post("/signin", async (c) => {
   }).$extends(withAccelerate());
 
   const body = await c.req.json();
+  const { success } = SigninBodySchema.safeParse(body);
+  if (!success) {
+    c.status(411);
+    return c.text("Invalid");
+  }
   try {
     const user = await prisma.user.findFirst({
       where: {
